@@ -2,15 +2,19 @@ import { fastify } from "fastify";
 
 const server = fastify();
 
-server.get("/", () => {
+server.post("/videos", () => {
 	return "Hello World";
 });
 
-server.get("/hello", () => {
+server.get("/videos", () => {
 	return "Hello User";
 });
 
-server.get("/node", () => {
+server.put("/videos/:id", () => {
+	return "Hello Node.js";
+});
+
+server.delete("/videos/:id", () => {
 	return "Hello Node.js";
 });
 
