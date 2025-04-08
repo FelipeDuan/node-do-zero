@@ -20,7 +20,9 @@ server.post("/videos", (req, res) => {
 });
 
 server.get("/videos", () => {
-	return "Hello User";
+	const videos = database.list();
+
+	return videos;
 });
 
 server.put("/videos/:id", () => {
