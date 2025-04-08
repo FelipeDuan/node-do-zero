@@ -38,8 +38,12 @@ server.put("/videos/:id", (req, res) => {
 	return res.status(204).send();
 });
 
-server.delete("/videos/:id", () => {
-	return "Hello Node.js";
+server.delete("/videos/:id", (req, res) => {
+	const videoId = req.params.id;
+
+	database.delete(videoId);
+
+	return res.status(204).send();
 });
 
 server.listen({
