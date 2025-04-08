@@ -3,8 +3,20 @@ import { DatabaseMemory } from "./database-memory.js";
 
 const server = fastify();
 
-server.post("/videos", () => {
-	return "Hello World";
+const database = new DatabaseMemory();
+
+// Request Body
+
+server.post("/videos", (req, res) => {
+	const { title, description, duration } = req.body;
+
+	database.create({
+		title,
+		description,
+		duration,
+	});
+
+	return res.status(201).send();
 });
 
 server.get("/videos", () => {
